@@ -80,7 +80,7 @@ function draw() {
   }
   
   //cucu-->cohete
-  if(movHorario == 0){
+  if(misHoras == 12){
     fill(153, 0, 0);
 		beginShape();
 		vertex(coheteX,coheteY);
