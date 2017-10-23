@@ -111,30 +111,48 @@ var dirY = 10;
 var XY1 = 200;
 var primerCirculo = 40;
 
-var tiempo = millis();
+var tiempo = 0;
+
+var miCancion;
+var miAmplitud;
+
+//para que comience donde es
+var comienzo;
+
+function preload(){
+  miCancion = loadSound('Assets/069 - akira ifukube - godzilla - main title (1954).mp3');
+}
 
 function setup() { 
   createCanvas(400, 400);
+  miCancion.setVolume(0.3);
+  miCancion.play();
+  
+  comienzo = millis();
+  print(comienzo);
+  
+  tiempo = millis();
 } 
 
 function draw() { 
+ 
   
-  if (millis() < 600){
+  if (millis() < (600 + comienzo)){
 		background(0, 0 ,0);
 	}
   
-  if (millis() > 600 && millis() < 700){
+  if (millis() > (600 + comienzo) && millis() < (700 + comienzo)){
 		background(255, 255 ,255);
 	}
   
-  if (millis() > 700){
+  if (millis() > 700 + comienzo){
 		background(0, 0 ,0);
 	}
   
   noStroke();
   
   //circulo rojo que crece
-  if (millis() > 700 && millis() < 1000 || millis() > 1100 && millis() < 1400 || millis() > 1500 && millis() < 1800 ||millis() > 1900 && millis() < 2200 || millis() > 2300 && millis() < 2600 || millis() > 2700 && millis() < 3000 || millis() > 3100 && millis() < 3400 || millis() > 3500 && millis() < 3800){
+  if (millis() > (700 + comienzo) && millis() < (1000 + comienzo) || millis() > (1100 + comienzo) && millis() < (1400 + comienzo) || millis() > (1500 + comienzo) && millis() < (1800 + comienzo) ||millis() > (1900 + comienzo) && millis() < (2200 + comienzo) || millis() > (2300 + comienzo) && millis() < (2600 + comienzo) || millis() > (2700 + comienzo) && millis() < (3000 + comienzo) || millis() > (3100 + comienzo) && millis() < (3400 + comienzo) || millis() > (3500 + comienzo) && millis() < (3800 + comienzo)){
     fill(255, 0, 0);
     ellipse(XY1, XY1, primerCirculo, primerCirculo);
     primerCirculo = primerCirculo + 1
@@ -142,17 +160,17 @@ function draw() {
   
   //tres circulos esquina
   	//circulo morado
-  if(millis() > 3800 && millis() < 4200){
+  if(millis() > (3800 + comienzo) && millis() < (4200 + comienzo)){
     fill(85, 51, 222);
     ellipse(350, 40, 20, 20);
   }
   	//circulo azul
-  if(millis() > 3900 && millis() < 4200){
+  if(millis() > (3900 + comienzo) && millis() < (4200 + comienzo)){
     fill(17, 87, 133);
     ellipse(320, 40, 20, 20);
   }
   	//circulo verde
-  if(millis() > 4000 && millis() < 4200){
+  if(millis() > (4000 + comienzo) && millis() < (4200 + comienzo)){
     fill(5, 105, 70);
     ellipse(290, 40, 20, 20);
   }
@@ -160,17 +178,17 @@ function draw() {
   //lineas de colores 
   	//linea morada
   strokeWeight(10);
-  if(millis() > 4500 && millis() < 4900){
+  if(millis() > (4500 + comienzo) && millis() < (4900 + comienzo)){
     stroke(85, 51, 222);
     line(200, 0, 0, 200);
   }
   	//linea azul
-  if(millis() > 4600 && millis() < 4900){
+  if(millis() > (4600 + comienzo) && millis() < (4900 + comienzo)){
     stroke(17, 87, 133);
     line(240, 0, 0, 240);
   }
   	//linea verde
-  if(millis() > 4700 && millis() < 4900){
+  if(millis() > (4700 + comienzo) && millis() < (4900 + comienzo)){
     stroke(5, 105, 70);
     line(280, 0, 0, 280);
   }
@@ -178,23 +196,23 @@ function draw() {
   //tres triangulos
   noStroke();
   	//triangulo morado
-  if(millis() > 5200 && millis() < 5600){
+  if(millis() > (5200 + comienzo) && millis() < (5600 + comienzo)){
     fill(85, 51, 222);
     triangle(140, 70, 170, 130, 110, 130);
   }
   	//triangulo azul
-  if(millis() > 5300 && millis() < 5600){
+  if(millis() > (5300 + comienzo) && millis() < (5600 + comienzo)){
     fill(17, 87, 133);
     triangle(210, 160, 240, 220, 180, 220);
   }
   	//triangulo verde
-  if(millis() > 5400 && millis() < 5700){
+  if(millis() > (5400 + comienzo) && millis() < (5700 + comienzo)){
     fill(5, 105, 70);
     triangle(280, 250, 310, 310, 250, 310);
   }
   
   //cuadro rebotin
-  if(millis() > 5700 && millis() < 6400){
+  if(millis() > (5700 + comienzo) && millis() < (6400 + comienzo)){
     fill(242, 242, 5);
   	rect(X, Y, 20, 20);
   	X= X+dirX;
@@ -209,40 +227,40 @@ function draw() {
   
   //tres circulos
   	//verde
-  if(millis() > 6400 && millis() < 6800){
+  if(millis() > (6400 + comienzo) && millis() < (6800 + comienzo)){
     fill(19, 240, 8);
     ellipse(200, 230, 80, 80);
   }
   	//rojo
-  if(millis() > 6500 && millis() < 6800){
+  if(millis() > (6500 + comienzo) && millis() < (6800 + comienzo)){
     fill(255, 0, 0, 100);    ellipse(170, 200, 80, 80);
   }
   	//azul
-  if(millis() > 6600 && millis() < 6800){
+  if(millis() > (6600 + comienzo) && millis() < (6800 + comienzo)){
     fill(14, 38, 97, 160);
     ellipse (230, 200, 80, 80);
   }
   
   //rectangulos de color
   	//verde
-  if (millis() >7200 && millis() < 7600){
+  if (millis() > (7200+ comienzo) && millis() < (7600 + comienzo)){
     fill(40, 143, 34);
     rect(0, 0, 400, 133);
   }
   	//rojo
-  if (millis() >7300 && millis() < 7600){
+  if (millis() > (7300 + comienzo) && millis() < (7600 + comienzo)){
     fill(117, 34, 34);
     rect(0, 133, 400, 133);
   }
   	//azul
-  if (millis() >7400 && millis() < 7600){
+  if (millis() > (7400 + comienzo) && millis() < (7600 + comienzo)){
     fill(39, 54, 87);
     rect(0, 266, 400, 134);
   }
 
   //diamantes 
   	//verde
-  if (millis() >7900 && millis() < 8300){
+  if (millis() > (7900 + comienzo) && millis() < (8300 + comienzo)){
     fill(40, 143, 34);
     beginShape();
     vertex(100,160);
@@ -252,7 +270,7 @@ function draw() {
     endShape(CLOSE);
   }
   	//rojo
-  if (millis() >8000 && millis() < 8300){
+  if (millis() > (8000 + comienzo) && millis() < (8300 + comienzo)){
     fill(117, 34, 34);
     beginShape();
     vertex(200,160);
@@ -262,7 +280,7 @@ function draw() {
     endShape(CLOSE);
   }
   	//azul
-  if (millis() > 8100 && millis() < 8300){
+  if (millis() > (8100 + comienzo) && millis() < (8300 + comienzo)){
     fill(39, 54, 87);
     beginShape();
     vertex(300,160);
@@ -275,17 +293,17 @@ function draw() {
   //lineas verticales
   	//verde
   strokeWeight(30);
-  if(millis() > 8600 && millis() < 9000){
+  if(millis() > (8600 + comienzo) && millis() < (9000 + comienzo)){
     stroke(40, 143, 34);
     line(300, 0, 300, 400);
   }
   	//roja
-  if(millis() > 8700 && millis() < 9000){
+  if(millis() > (8700 + comienzo) && millis() < (9000 + comienzo)){
     stroke(117, 34, 34);
     line(200, 0, 200, 400);
   }
   	//azul
-  if(millis() > 8800 && millis() < 9000){
+  if(millis() > (8800 + comienzo) && millis() < (9000 + comienzo)){
     stroke(39, 54, 87);
     line(100, 0, 100, 400);
   }
@@ -293,153 +311,153 @@ function draw() {
   //gotas
   noStroke();
   fill(12, 171, 245);
-  if(millis() > 9000 && millis() < 9125){
+  if(millis() > (9000 + comienzo) && millis() < (9125 + comienzo)){
     rect(0, 0, 400, 40);
   }
-  if(millis() > 9125 && millis() < 9250){
+  if(millis() > (9125 + comienzo) && millis() < (9250 + comienzo)){
     rect(57, 0, 343, 40);
     rect(0, posYgota1, 57, 40);
     posYgota1 = posYgota1 + 40;
   }
-  if(millis() > 9250 && millis() < 9375){
+  if(millis() > (9250 + comienzo) && millis() < (9375 + comienzo)){
     rect(57, 0, 228, 40);
     rect(342, 0, 58, 40);
     rect(285, posYgota2 , 57, 40);
     posYgota2 = posYgota2 + 40;
   }
-  if(millis() > 9375 && millis() < 9500){
+  if(millis() > (9375 + comienzo) && millis() < (9500 + comienzo)){
     rect(57, 0, 114, 40);
     rect(228, 0, 57, 40);
     rect(342, 0, 58, 40);
     rect(171, posYgota3, 57, 40);
     posYgota3 = posYgota3 + 40;
   }
-  if(millis() > 9500 && millis() < 9625){
+  if(millis() > (9500 + comienzo) && millis() < (9625 + comienzo)){
     rect(114, 0, 57, 40);
     rect(228, 0, 57, 40);
     rect(342, 0, 58, 40);
     rect(57, posYgota4, 57, 40);
     posYgota4 = posYgota4 + 40;
   }
-  if(millis() > 9625 && millis() < 9750){
+  if(millis() > (9625 + comienzo) && millis() < (9750 + comienzo)){
     rect(114, 0, 57, 40);
     rect(228, 0, 57, 40);
     rect(342, posYgota5, 58, 40);
     posYgota5 = posYgota5 + 40;
   }
-  if(millis() > 9750 && millis() < 9875){
+  if(millis() > (9750 + comienzo) && millis() < (9875 + comienzo)){
     rect(228, 0, 57, 40);
     rect(114, posYgota6, 57, 40);
     posYgota6 = posYgota6 + 40;
   }
-  if(millis() > 9875 && millis() < 10000){
+  if(millis() > (9875 + comienzo) && millis() < (10000 + comienzo)){
     rect(228, posYgota7, 57, 40);
     posYgota7 = posYgota7 + 40;
   }
   
   //ciculo despues de gotas
-  if(millis() > 10000 && millis() < 10100 || millis() > 10200 && millis() < 10300 || millis() > 10400 && millis() < 10600){
+  if(millis() > (10000 + comienzo) && millis() < (10100 + comienzo) || millis() > (10200 + comienzo) && millis() < (10300 + comienzo) || millis() > (10400 + comienzo) && millis() < (10600 + comienzo)){
     fill(227, 16, 227);
     ellipse(200, 200, 200, 200);
   }
   
   //cuadricula
-  if(millis() > 10600 && millis() < 11800){
+  if(millis() > (10600 + comienzo) && millis() < (11800 + comienzo)){
     fill(237, 33, 115);
     rect(0, 80, movlinea1, 40);
     movlinea1 = movlinea1 + 40;
   }
-  if(millis() > 10800 && millis() < 11800){
+  if(millis() > (10800 + comienzo) && millis() < (11800 + comienzo)){
     fill(161, 33, 235);
     rect(0, 180, movlinea2, 40);
     movlinea2 = movlinea2 + 40;
   }
-  if(millis() > 11000 && millis() < 11800){
+  if(millis() > (11000 + comienzo) && millis() < (11800 + comienzo)){
     fill(35, 45, 235);
     rect(0, 280, movlinea3, 40);
     movlinea3 = movlinea3 + 40;
   }
-  if(millis() > 11300 && millis() < 11800){
+  if(millis() > (11300 + comienzo) && millis() < (11800 + comienzo)){
     fill(235, 98, 35);
     rect(80, 0, 40, movlinea4);
     movlinea4 = movlinea4 + 40;
   }
-  if(millis() > 11400 && millis() < 11800){
+  if(millis() > (11400 + comienzo) && millis() < (11800 + comienzo)){
     fill(235, 178, 35);
     rect(180, 0, 40, movlinea5);
     movlinea5 = movlinea5 + 40;
   }
-  if(millis() > 11500 && millis() < 11800){
+  if(millis() > (11500 + comienzo) && millis() < (11800 + comienzo)){
     fill(188, 235, 35);
     rect(280, 0, 40, movlinea6);
     movlinea6 = movlinea6 + 40;
   }
   
   //circulo blanco en movimiento
-	if(millis() > 11800 && millis() < 13500){
+	if(millis() > (11800 + comienzo) && millis() < (13500 + comienzo)){
 		fill(255, 255, 255);
 		ellipse(200, 200, tamañoCirculodespcuadricula, tamañoCirculodespcuadricula);
 		tamañoCirculodespcuadricula = tamañoCirculodespcuadricula - 3;
 	}
   //circulo blanco quieto
-	if(millis() > 13500 && millis() < 15400){
+	if(millis() > (13500 + comienzo) && millis() < (15400 + comienzo)){
 		fill(255, 255, 255);
 		ellipse(200, 200, 100,100);
 	}
   //circulos alrededor circulo blanco
-	if(millis() > 13700 && millis() < 15400){
+	if(millis() > (13700 + comienzo) && millis() < (15400 + comienzo)){
 		fill(77, 112, 69);
 		ellipse(160, 130, tamañoCirculosRededor, tamañoCirculosRededor)
 		tamañoCirculosRededor = tamañoCirculosRededor - 0.5;
 	}
-	if(millis() > 13800 && millis() < 15400){
+	if(millis() > (13800 + comienzo) && millis() < (15400 + comienzo)){
 		fill(110, 68, 109);
 		ellipse(300, 100, tamañoCirculosRededor + 5, tamañoCirculosRededor + 5);
 	}
-	if(millis() > 13900 && millis() < 15400){
+	if(millis() > (13900 + comienzo) && millis() < (15400 + comienzo)){
 		fill(110, 100, 68);
 		ellipse(200, 320, tamañoCirculosRededor + 10, tamañoCirculosRededor + 10);
 	}
-	if(millis() > 14300 && millis() < 15400){
+	if(millis() > (14300 + comienzo) && millis() < (15400 + comienzo)){
 		fill(110, 68, 68);
 		ellipse(60, 220, tamañoCirculosRededor + 15, tamañoCirculosRededor + 15)
 	}
-	if(millis() > 14400 && millis() < 15400){
+	if(millis() > (14400 + comienzo) && millis() < (15400 + comienzo)){
 		fill(68, 110, 91);
 		ellipse(330, 250, tamañoCirculosRededor + 20, tamañoCirculosRededor + 20);
 	}
-	if(millis() > 14500 && millis() < 15400){
+	if(millis() > (14500 + comienzo) && millis() < (15400 + comienzo)){
 		fill(26, 121, 128);
 		ellipse(30, 60, tamañoCirculosRededor + 25, tamañoCirculosRededor + 25);
 	}
-	if(millis() > 14900 && millis() < 15400){
+	if(millis() > (14900 + comienzo) && millis() < (15400 + comienzo)){
 		fill(128, 27, 113);
 		ellipse(80, 370, tamañoCirculosRededor + 30, tamañoCirculosRededor + 30)
 	}
-	if(millis() > 15000 && millis() < 15400){
+	if(millis() > (15000 + comienzo) && millis() < (15400 + comienzo)){
 		fill(209, 196, 50);
 		ellipse(300, 40, tamañoCirculosRededor + 35, tamañoCirculosRededor + 35);
 	}
-	if(millis() > 15100 && millis() < 15400){
+	if(millis() > (15100 + comienzo) && millis() < (15400 + comienzo)){
 		fill(207, 86, 50);
 		ellipse(280, 370, tamañoCirculosRededor + 40, tamañoCirculosRededor + 40);
 	}
   
   //tres cuadrados quietos
-  if(millis() > 15600 && millis() < 16100){
+  if(millis() > (15600 + comienzo) && millis() < (16100 + comienzo)){
     fill(132, 245, 122);
     rect(110, 10, 40, 40);
   }
-  if(millis() > 15700 && millis() < 16100){
+  if(millis() > (15700 + comienzo) && millis() < (16100 + comienzo)){
     fill(132, 245, 122);
     rect(60, 10, 40, 40);
   }
-  if(millis() > 15800 && millis() < 16100){
+  if(millis() > (15800 + comienzo) && millis() < (16100 + comienzo)){
     fill(132, 245, 122);
     rect(10, 10, 40, 40);
   }
   //tres cuadrados en movimiento
-  if(millis() > 16100 && millis() < 17300){
+  if(millis() > (16100 + comienzo) && millis() < (17300 + comienzo)){
     fill(132, 245, 122);
     rect(posXcuadrosverdes, posYcuadradosverdes, 40, 40);
     rect(posXcuadrosverdes - 50, posYcuadradosverdes, 40, 40);
@@ -456,52 +474,52 @@ function draw() {
   
   //"gotas" naranjas
   fill(255, 140, 0);
-  if(millis() > 17300 && millis() < 17425){
+  if(millis() > (17300 + comienzo) && millis() < (17425 + comienzo)){
     rect(0, 0, 40, 400);
   }
-  if(millis() > 17425 && millis() < 17550){
+  if(millis() > (17425 + comienzo) && millis() < (17550 + comienzo)){
     rect(0, 57, 40, 343);
     rect(posXgotaNaranja1,0,  40, 57);
     posXgotaNaranja1 = posXgotaNaranja1 + 40;
   }
-  if(millis() > 17550 && millis() < 17675){
+  if(millis() > (17550 + comienzo) && millis() < (17675 + comienzo)){
     rect(0, 57, 40, 228);
     rect(0, 342, 40, 58);
     rect(posXgotaNaranja2, 285,  40, 57);
     posXgotaNaranja2 = posXgotaNaranja2 + 40;
   }
-  if(millis() > 17675 && millis() < 17800){
+  if(millis() > (17675 + comienzo) && millis() < (17800 + comienzo)){
     rect(0, 57, 40, 114);
     rect(0, 228, 40, 57);
     rect(0, 342, 40, 58);
     rect(posXgotaNaranja3, 171,  40, 57);
     posXgotaNaranja3 = posXgotaNaranja3 + 40;
   }
-  if(millis() > 17800 && millis() < 17925){
+  if(millis() > (17800 + comienzo) && millis() < (17925 + comienzo)){
     rect(0, 114, 40, 57);
     rect(0, 228, 40, 57);
     rect(0, 342, 40, 58);
     rect(posXgotaNaranja4, 57,  40, 57);
     posXgotaNaranja4 = posXgotaNaranja4 + 40;
   }
-  if(millis() > 17925 && millis() < 18050){
+  if(millis() > (17925 + comienzo) && millis() < (18050 + comienzo)){
     rect(0, 114, 40, 57);
     rect(0, 228, 40, 57);
     rect(posXgotaNaranja5, 342, 40, 58);
     posXgotaNaranja5 = posXgotaNaranja5 + 40;
   }
-  if(millis() > 18050 && millis() < 18175){
+  if(millis() > (18050 + comienzo) && millis() < (18175 + comienzo)){
     rect(0, 228, 40, 57);
     rect(posXgotaNaranja6, 114, 40, 57);
     posXgotaNaranja6 = posXgotaNaranja6 + 40;
   }
-  if(millis() > 18175 && millis() < 18300){
+  if(millis() > (18175 + comienzo) && millis() < (18300 + comienzo)){
     rect(posXgotaNaranja7, 228, 40, 57);
     posXgotaNaranja7 = posXgotaNaranja7 + 40;
   }
   
   //triangulos vinotinto
-  if(millis() > 18300 && millis() < 18500 || millis() > 18600 && millis() < 18800){
+  if(millis() > (18300 + comienzo) && millis() < (18500 + comienzo) || millis() > (18600 + comienzo) && millis() < (18800 + comienzo)){
     fill(82, 0, 0);
     triangle(200, 40, 250, 360, 150, 360);
     triangle(173, 40, 92, 311, 14, 374);
@@ -509,27 +527,27 @@ function draw() {
   }
   
   //cambio fondos
-  if(millis() > 18900 && millis() < 19100){
+  if(millis() > (18900 + comienzo) && millis() < (19100 + comienzo)){
     background(255, 255, 255);
   }
-  if(millis() > 19100 && millis() < 19300){
+  if(millis() > (19100 + comienzo) && millis() < (19300 + comienzo)){
     background(45, 77, 3);
   }
   
   //cuadrados X4
-  if(millis() > 19600 && millis() < 19800){
+  if(millis() > (19600 + comienzo) && millis() < (19800 + comienzo)){
     fill(255, 111, 0);
     rect(100, 100, 80, 80);
     rect(220, 100, 80, 80);
     rect(100, 220, 80, 80);
     rect(220, 220, 80, 80);
   }
-  if(millis() > 20000 && millis() < 20200){
+  if(millis() > (20000 + comienzo) && millis() < (20200 + comienzo)){
     fill(255, 111, 0);
     rect(100, 100, 80, 80);
     rect(100, 220, 80, 80);
   }
-  if(millis() > 20200 && millis() < 20400){
+  if(millis() > (20200 + comienzo) && millis() < (20400 + comienzo)){
     fill(255, 111, 0);
     rect(220, 100, 80, 80);
     rect(220, 220, 80, 80);
@@ -537,52 +555,52 @@ function draw() {
   
   //"gotas" moradas
   fill(77, 48, 138);
-  if(millis() > 20400 && millis() < 20525){
+  if(millis() > (20400 + comienzo) && millis() < (20525 + comienzo)){
     rect(360, 0, 40, 400);
   }
-  if(millis() > 20525 && millis() < 20650){
+  if(millis() > (20525 + comienzo) && millis() < (20650 + comienzo)){
     rect(360, 57, 40, 343);
     rect(posXgotaMorada1,0,  40, 57);
     posXgotaMorada1 = posXgotaMorada1 - 40;
   }
-  if(millis() > 20650 && millis() < 20775){
+  if(millis() > (20650 + comienzo) && millis() < (20775 + comienzo)){
     rect(360, 57, 40, 228);
     rect(360, 342, 40, 58);
     rect(posXgotaMorada2, 285,  40, 57);
     posXgotaMorada2 = posXgotaMorada2 - 40;
   }
-  if(millis() > 20775 && millis() < 20900){
+  if(millis() > (20775 + comienzo) && millis() < (20900 + comienzo)){
     rect(360, 57, 40, 114);
     rect(360, 228, 40, 57);
     rect(360, 342, 40, 58);
     rect(posXgotaMorada3, 171,  40, 57);
     posXgotaMorada3 = posXgotaMorada3 - 40;
   }
-  if(millis() > 20900 && millis() < 21025){
+  if(millis() > (20900 + comienzo) && millis() < (21025 + comienzo)){
     rect(360, 114, 40, 57);
     rect(360, 228, 40, 57);
     rect(360, 342, 40, 58);
     rect(posXgotaMorada4, 57,  40, 57);
     posXgotaMorada4 = posXgotaMorada4 - 40;
   }
-  if(millis() > 21025 && millis() < 21150){
+  if(millis() > (21025 + comienzo) && millis() < (21150 + comienzo)){
     rect(360, 114, 40, 57);
     rect(360, 228, 40, 57);
     rect(posXgotaMorada5, 342, 40, 58);
     posXgotaMorada5 = posXgotaMorada5 - 40;
   }
-  if(millis() > 21150 && millis() < 21275){
+  if(millis() > (21150 + comienzo) && millis() < (21275 + comienzo)){
     rect(360, 228, 40, 57);
     rect(posXgotaMorada6, 114, 40, 57);
     posXgotaMorada6 = posXgotaMorada6 - 40;
   }
-  if(millis() > 21275 && millis() < 21400){
+  if(millis() > (21275 + comienzo) && millis() < (21400 + comienzo)){
     rect(posXgotaMorada7, 228, 40, 57);
     posXgotaMorada7 = posXgotaMorada7 - 40;
   }
   
   //puntos que desaparecen
-  if(millis() > 21400 && millis() < 21600){
+  if(millis() > (21400 + comienzo) && millis() < (21600 + comienzo)){
     fill(82, 0, 0);
     ellipse(130, 80, 40, 40);
     fill(0, 64, 255);
@@ -614,7 +632,7 @@ function draw() {
     fill(177, 165, 201);
     ellipse(53, 28, 40, 40);
   }
-  if(millis() > 21600 && millis() < 21800){
+  if(millis() > (21600 + comienzo) && millis() < (21800 + comienzo)){
     fill(97, 92, 173);
     ellipse(250, 33, 40, 40);
     fill(168, 104, 104);
@@ -636,7 +654,7 @@ function draw() {
     fill(177, 165, 201);
     ellipse(53, 28, 40, 40);
   }
-  if(millis() > 21800 && millis() < 22000){
+  if(millis() > (21800 + comienzo) && millis() < (22000 + comienzo)){
     fill(99, 5, 107);
     ellipse(218, 131, 40, 40);
     fill(234, 130, 250);
@@ -650,7 +668,7 @@ function draw() {
   }
 
   //trio
-  if(millis() > 22300 && millis() < 22500 || millis() > 22600 && millis() < 22800 || millis() > 22900 && millis() < 23100){
+  if(millis() > (22300 + comienzo) && millis() < (22500 + comienzo) || millis() > (22600 + comienzo) && millis() < (22800 + comienzo) || millis() > (22900 + comienzo) && millis() < (23100 + comienzo)){
     fill(214, 110, 240);
     ellipse(movXtrio, movYtrio, tamañoTrio, tamañoTrio);
     ellipse(movXtrio - 50, movYtrio + 40, tamañoTrio, tamañoTrio);
@@ -660,7 +678,7 @@ function draw() {
     movYtrio = movYtrio + 3;
   }
   //trio 2
-  if(millis() > 23300 && millis() < 23400 || millis() > 23500 && millis() < 23600 || millis() > 23700 && millis() < 23800){
+  if(millis() > (23300 + comienzo) && millis() < (23400 + comienzo) || millis() > (23500 + comienzo) && millis() < (23600 + comienzo) || millis() > (23700 + comienzo) && millis() < (23800 + comienzo)){
     fill(47, 99, 55);
     ellipse(movXtrio2, movYtrio2, tamañoTrio2, tamañoTrio2);
     ellipse(movXtrio2 - 50, movYtrio2 + 40, tamañoTrio2, tamañoTrio2);
@@ -671,7 +689,7 @@ function draw() {
   }
   
   //gran morada!!!
-  if(millis() > 24000 && millis() < 24500){
+  if(millis() > (24000 + comienzo) && millis() < (24500 + comienzo)){
     ellipse(movGranellipse, 400, 400, 400);
     movGranellipse = movGranellipse - 60;
     if(movGranellipse < -200)
@@ -679,7 +697,7 @@ function draw() {
   }
   
   //cuadros colores
-  if(millis() > 24500 && millis() < 24600){
+  if(millis() > (24500 + comienzo) && millis() < (24600 + comienzo)){
     fill(173, 12, 12);
     rect(0, 0, 400, 400);
     fill(171, 62, 12);
@@ -693,7 +711,7 @@ function draw() {
     fill(171, 171, 12);
     rect(200, 200, 200, 200);
   }
-    if(millis() > 24700 && millis() < 24800){
+    if(millis() > (24700 + comienzo) && millis() < (24800 + comienzo)){
     fill(107, 6, 6);
     rect(0, 0, 400, 400);
     fill(133, 8, 8);
@@ -707,7 +725,7 @@ function draw() {
     fill(171, 113, 12);
     rect(200, 200, 200, 200);
   }
-    if(millis() > 24900 && millis() < 25000){
+    if(millis() > (24900 + comienzo) && millis() < (25000 + comienzo)){
     fill(36, 2, 2);
     rect(0, 0, 400, 400);
     fill(71, 3, 3);
@@ -721,7 +739,7 @@ function draw() {
     fill(171, 62, 12);
     rect(200, 200, 200, 200);
   }
-  if(millis() > 25100 && millis() < 25200){
+  if(millis() > (25100 + comienzo) && millis() < (25200 + comienzo)){
     fill(36, 2, 2);
     rect(80, 80, 320, 320);
     fill(71, 3, 3);
@@ -731,7 +749,7 @@ function draw() {
     fill(133, 8, 8);
     rect(200, 200, 200, 200);
   }
-  if(millis() > 25300 && millis() < 25400){
+  if(millis() > (25300 + comienzo) && millis() < (25400 + comienzo)){
     fill(36, 2, 2);
     rect(160, 160, 240, 240);
     fill(71, 3, 3);
@@ -739,7 +757,7 @@ function draw() {
   }
   
   // ciculo cambia color
-  if(millis() > 25400 && millis() < 25800){
+  if(millis() > (25400 + comienzo) && millis() < (25800 + comienzo)){
     for (var circulo = 255; circulo > 0; circulo = circulo - 21) {
     fill(circulo, cambiocolorcirculocolores, 188);
     ellipse(200, 200, circulo, circulo);
@@ -749,16 +767,16 @@ function draw() {
   
   //circulos (T-T)
   fill(87, 255, 98);
-  if(millis() > 25800 && millis() < 26200){
+  if(millis() > (25800 + comienzo) && millis() < (26200 + comienzo)){
     ellipse(100, 300, 100, 100);
   }
-  if(millis() > 25900 && millis() < 26200){
+  if(millis() > (25900 + comienzo) && millis() < (26200 + comienzo)){
     ellipse(200, 200, 100, 100);
   }
-  if(millis() > 26000 && millis() < 26200){
+  if(millis() > (26000 + comienzo) && millis() < (26200 + comienzo)){
     ellipse(300, 100, 100, 100);
   }
-  if(millis() > 26500 && millis() < 26600 || millis() > 26700 && millis() < 26800 || millis() > 26900 && millis() < 27000){
+  if(millis() > (26500 + comienzo) && millis() < (26600 + comienzo) || millis() > (26700 + comienzo) && millis() < (26800 + comienzo) || millis() > (26900 + comienzo) && millis() < (27000 + comienzo)){
     ellipse(100, 300, 100, 100);
     ellipse(200, 200, 100, 100);
     ellipse(300, 100, 100, 100);
@@ -766,113 +784,113 @@ function draw() {
   
   //gotas que desafian la ley de gravedad (ºOº)
     fill(255, 89, 155);
-  if(millis() > 27300 && millis() < 27425){
+  if(millis() > (27300 + comienzo) && millis() < (27425 + comienzo)){
     rect(0, 360, 400, 40);
   }
-  if(millis() > 27425 && millis() < 27550){
+  if(millis() > (27425 + comienzo) && millis() < (27550 + comienzo)){
     rect(57, 360, 343, 40);
     rect(0, posYgotaAntigravedad1, 57, 40);
     posYgotaAntigravedad1 = posYgotaAntigravedad1 - 40;
   }
-  if(millis() > 27550 && millis() < 27675){
+  if(millis() > (27550 + comienzo) && millis() < (27675 + comienzo)){
     rect(57, 360, 228, 40);
     rect(342, 360, 58, 40);
     rect(285, posYgotaAntigravedad2 , 57, 40);
     posYgotaAntigravedad2 = posYgotaAntigravedad2 - 40;
   }
-  if(millis() > 27675 && millis() < 27800){
+  if(millis() > (27675 + comienzo) && millis() < (27800 + comienzo)){
     rect(57, 360, 114, 40);
     rect(228, 360, 57, 40);
     rect(342, 360, 58, 40);
     rect(171, posYgotaAntigravedad3, 57, 40);
     posYgotaAntigravedad3 = posYgotaAntigravedad3 - 40;
   }
-  if(millis() > 27800 && millis() < 27925){
+  if(millis() > (27800 + comienzo) && millis() < (27925 + comienzo)){
     rect(114, 360, 57, 40);
     rect(228, 360, 57, 40);
     rect(342, 360, 58, 40);
     rect(57, posYgotaAntigravedad4, 57, 40);
     posYgotaAntigravedad4 = posYgotaAntigravedad4 - 40;
   }
-  if(millis() > 27925 && millis() < 28050){
+  if(millis() > (27925 + comienzo) && millis() < (28050 + comienzo)){
     rect(114, 360, 57, 40);
     rect(228, 360, 57, 40);
     rect(342, posYgotaAntigravedad5, 58, 40);
     posYgotaAntigravedad5 = posYgotaAntigravedad5 - 40;
   }
-  if(millis() > 28050 && millis() < 28175){
+  if(millis() > (28050 + comienzo) && millis() < (28175 + comienzo)){
     rect(228, 360, 57, 40);
     rect(114, posYgotaAntigravedad6, 57, 40);
     posYgotaAntigravedad6 = posYgotaAntigravedad6 - 40;
   }
-  if(millis() > 28175 && millis() < 28300){
+  if(millis() > (28175 + comienzo) && millis() < (28300 + comienzo)){
     rect(228, posYgotaAntigravedad7, 57, 40);
     posYgotaAntigravedad7 = posYgotaAntigravedad7 - 40;
   }
   
   //lineas diagonales de arcoiris (*O*)
   strokeWeight(20);
-  if(millis() > 28500 && millis() < 29200){
+  if(millis() > (28500 + comienzo) && millis() < (29200 + comienzo)){
     stroke(255, 89, 0);
     line(-10, 350, 50, 410);
   }
-  if(millis() > 28550 && millis() < 29250){
+  if(millis() > (28550 + comienzo) && millis() < (29250 + comienzo)){
     stroke(209, 62, 62);
     line(-10, 300, 100, 410);
   }
-  if(millis() > 28600 && millis() < 29300){
+  if(millis() > (28600 + comienzo) && millis() < (29300 + comienzo)){
     stroke(238, 255, 0);
     line(-10, 250, 150, 410);
   }
-  if(millis() > 28650 && millis() < 29350){
+  if(millis() > (28650 + comienzo) && millis() < (29350 + comienzo)){
     stroke(85, 255, 0);
     line(-10, 200, 200, 410);
   }
-  if(millis() > 28700 && millis() < 29400){
+  if(millis() > (28700 + comienzo) && millis() < (29400 + comienzo)){
     stroke(0, 255, 183);
     line(-10, 150, 250, 410);
   }
-  if(millis() > 28750 && millis() < 29450){
+  if(millis() > (28750 + comienzo) && millis() < (29450 + comienzo)){
     stroke(0, 196, 255);
     line(-10, 100, 300, 410);
   }
-  if(millis() > 28800 && millis() < 29500){
+  if(millis() > (28800 + comienzo) && millis() < (29500 + comienzo)){
     stroke(0, 72, 255);
     line(-10, 50, 350, 410);
   }
-  if(millis() > 28850 && millis() < 29550){
+  if(millis() > (28850 + comienzo) && millis() < (29550 + comienzo)){
     stroke(111, 0, 255);
     line(-10, 0, 400, 410);
   }
-  if(millis() > 28900 && millis() < 29600){
+  if(millis() > (28900 + comienzo) && millis() < (29600 + comienzo)){
     stroke(170, 0, 255);
     line(30, -10, 420, 380);
   }
-  if(millis() > 28950 && millis() < 29650){
+  if(millis() > (28950 + comienzo) && millis() < (29650 + comienzo)){
     stroke(234, 0, 255);
     line(80, -10, 420, 330);
   }
-  if(millis() > 29000 && millis() < 29700){
+  if(millis() > (29000 + comienzo) && millis() < (29700 + comienzo)){
     stroke(255, 0, 123);
     line(130, -10, 420, 280);
   }
-  if(millis() > 29050 && millis() < 29750){
+  if(millis() > (29050 + comienzo) && millis() < (29750 + comienzo)){
     stroke(255, 0, 51);
     line(180, -10, 420, 230);
   }
-  if(millis() > 29100 && millis() < 29800){
+  if(millis() > (29100 + comienzo) && millis() < (29800 + comienzo)){
     stroke(255, 111, 0);
     line(230, -10, 420, 180);
   }
-  if(millis() > 29150 && millis() < 29850){
+  if(millis() > (29150 + comienzo) && millis() < (29850 + comienzo)){
     stroke(255, 153, 0);
     line(280, -10, 420, 130);
   }
-  if(millis() > 29200 && millis() < 29900){
+  if(millis() > (29200 + comienzo) && millis() < (29900 + comienzo)){
     stroke(255, 213, 0);
     line(330, -10, 420, 80);
   }
-  if(millis() > 29250 && millis() < 29950){
+  if(millis() > (29250 + comienzo) && millis() < (29950 + comienzo)){
     stroke(255, 255, 0);
     line(380, -10, 420, 30);
   }
@@ -880,17 +898,17 @@ function draw() {
   //tres circulos otra vez 
   noStroke();
   	//verde
-  if(millis() > 30000 && millis() < 30400){
+  if(millis() > (30000 + comienzo) && millis() < (30400 + comienzo)){
     fill(19, 240, 8);
     ellipse(200, 230, 120, 120);
   }
   	//rojo
-  if(millis() > 30100 && millis() < 30400){
+  if(millis() > (30100 + comienzo) && millis() < (30400 + comienzo)){
     fill(255, 0, 0, 100);    
     ellipse(170, 200, 120, 120);
   }
   	//azul
-  if(millis() > 30200 && millis() < 30400){
+  if(millis() > (30200 + comienzo) && millis() < (30400 + comienzo)){
     fill(14, 38, 97, 160);
     ellipse (230, 200, 120, 120);
   }
@@ -898,24 +916,24 @@ function draw() {
   //lineas verticales otra vez 
   	//naranja
   strokeWeight(30);
-  if(millis() > 30800 && millis() < 31200){
+  if(millis() > (30800 + comienzo) && millis() < (31200 + comienzo)){
     stroke(255, 89, 0);
     line(300, 0, 300, 400);
   }
   	//roja
-  if(millis() > 30900 && millis() < 31200){
+  if(millis() > (30900 + comienzo) && millis() < (31200 + comienzo)){
     stroke(117, 34, 34);
     line(200, 0, 200, 400);
   }
   	//rosa
-  if(millis() > 31000 && millis() < 31200){
+  if(millis() > (31000 + comienzo) && millis() < (31200 + comienzo)){
     stroke(148, 12, 12);
     line(100, 0, 100, 400);
   }
   
   noStroke();
   //cuadro rebotin #2
-  if(millis() > 31200 && millis() < 31900){
+  if(millis() > (31200 + comienzo) && millis() < (31900 + comienzo)){
     fill(13, 117, 148);
   	rect(Xrebotin2, Yrebotin2, 40, 40);
   	Xrebotin2 = Xrebotin2 + dirXrebotin2;
@@ -929,53 +947,53 @@ function draw() {
   }
   
   //otro circulo en movimiento
-  if(millis() > 32000 && millis() < 34000){
+  if(millis() > (32000 + comienzo) && millis() < (34000 + comienzo)){
 		fill(151, 199, 48);
 		ellipse(200, 200, tamañoOtrocirculoenmovimiento, tamañoOtrocirculoenmovimiento);
 		tamañoOtrocirculoenmovimiento = tamañoOtrocirculoenmovimiento - 3;
 	}
   
   //triangulos que aparecen y desaparecen (ºoº)
-  if(millis() > 34100 && millis() < 34200){
+  if(millis() > (34100 + comienzo) && millis() < (34200 + comienzo)){
     fill(255, 234, 0);
     triangle(100, 50, 140, 350, 60, 350);
   }
-  if(millis() > 34300 && millis() < 34400){
+  if(millis() > (34300 + comienzo) && millis() < (34400 + comienzo)){
     fill(123, 255, 0);
     triangle(200, 50, 240, 350, 160, 350);
   }
-  if(millis() > 34500 && millis() < 34600){
+  if(millis() > (34500 + comienzo) && millis() < (34600 + comienzo)){
     fill(255, 89, 0);
     triangle(300, 50, 340, 350, 260, 350);
   }
   
   //cuadricula #2
-  if(millis() > 34800 && millis() < 36200){
+  if(millis() > (34800 + comienzo) && millis() < (36200 + comienzo)){
     fill(0, 238, 255);
     rect(80, 0, 40, movCuadriculados4);
     movCuadriculados4 = movCuadriculados4 + 40;
   }
-  if(millis() > 35000 && millis() < 36200){
+  if(millis() > (35000 + comienzo) && millis() < (36200 + comienzo)){
     fill(229, 111, 235);
     rect(180, 0, 40, movCuadriculados5);
     movCuadriculados5 = movCuadriculados5 + 40;
   }
-  if(millis() > 35200 && millis() < 36200){
+  if(millis() > (35200 + comienzo) && millis() < (36200 + comienzo)){
     fill(230, 64, 64);
     rect(280, 0, 40, movCuadriculados6);
     movCuadriculados6 = movCuadriculados6 + 40;
   }
-  if(millis() > 35500 && millis() < 36200){
+  if(millis() > (35500 + comienzo) && millis() < (36200 + comienzo)){
     fill(115, 168, 47);
     rect(0, 80, movCuadriculados1, 40);
     movCuadriculados1 = movCuadriculados1 + 40;
   }
-  if(millis() > 35700 && millis() < 36200){
+  if(millis() > (35700 + comienzo) && millis() < (36200 + comienzo)){
     fill(80, 51, 176);
     rect(0, 180, movCuadriculados2, 40);
     movCuadriculados2 = movCuadriculados2 + 40;
   }
-  if(millis() > 35900 && millis() < 36200){
+  if(millis() > (35900 + comienzo) && millis() < (36200 + comienzo)){
     fill(230, 222, 64);
     rect(0, 280, movCuadriculados3, 40);
     movCuadriculados3 = movCuadriculados3 + 40;
@@ -983,13 +1001,13 @@ function draw() {
   
   //gotas de arriba y abajo
   
-  if(millis() > 36400 && millis() < 36525){
+  if(millis() > (36400 + comienzo) && millis() < (36525 + comienzo)){
     fill(255, 89, 155);
     rect(0, 360, 400, 40);
     fill(12, 171, 245);
     rect(0, 0, 400, 40);
   }
-  if(millis() > 36525 && millis() < 36650){
+  if(millis() > (36525 + comienzo) && millis() < (36650 + comienzo)){
     fill(12, 171, 245);
     rect(57, 0, 343, 40);
     rect(0, posYgotas1, 57, 40);
@@ -999,7 +1017,7 @@ function draw() {
     rect(0, posYgotaAntigravedadDos1, 57, 40);
     posYgotaAntigravedadDos1 = posYgotaAntigravedadDos1 - 40;
   }
-  if(millis() > 36650 && millis() < 36775){
+  if(millis() > (36650 + comienzo) && millis() < (36775 + comienzo)){
     fill(12, 171, 245);
     rect(57, 0, 228, 40);
     rect(342, 0, 58, 40);
@@ -1011,7 +1029,7 @@ function draw() {
     rect(285, posYgotaAntigravedadDos2 , 57, 40);
     posYgotaAntigravedadDos2 = posYgotaAntigravedadDos2 - 40;
   }
-  if(millis() > 36775 && millis() < 36900){
+  if(millis() > (36775 + comienzo) && millis() < (36900 + comienzo)){
     fill(12, 171, 245);
     rect(57, 0, 114, 40);
     rect(228, 0, 57, 40);
@@ -1025,7 +1043,7 @@ function draw() {
     rect(171, posYgotaAntigravedadDos3, 57, 40);
     posYgotaAntigravedadDos3 = posYgotaAntigravedadDos3 - 40;
   }
-  if(millis() > 36900 && millis() < 37025){
+  if(millis() > (36900 + comienzo) && millis() < (37025 + comienzo)){
     fill(12, 171, 245);
     rect(114, 0, 57, 40);
     rect(228, 0, 57, 40);
@@ -1039,7 +1057,7 @@ function draw() {
     rect(57, posYgotaAntigravedadDos4, 57, 40);
     posYgotaAntigravedadDos4 = posYgotaAntigravedadDos4 - 40;
   }
-  if(millis() > 37025 && millis() < 37150){
+  if(millis() > (37025 + comienzo) && millis() < (37150 + comienzo)){
     fill(12, 171, 245);
     rect(114, 0, 57, 40);
     rect(228, 0, 57, 40);
@@ -1051,7 +1069,7 @@ function draw() {
     rect(342, posYgotaAntigravedadDos5, 58, 40);
     posYgotaAntigravedadDos5 = posYgotaAntigravedadDos5 - 40;
   }
-  if(millis() > 37150 && millis() < 37275){
+  if(millis() > (37150 + comienzo) && millis() < (37275 + comienzo)){
     fill(12, 171, 245);
     rect(228, 0, 57, 40);
     rect(114, posYgotas6, 57, 40);
@@ -1061,7 +1079,7 @@ function draw() {
     rect(114, posYgotaAntigravedadDos6, 57, 40);
     posYgotaAntigravedadDos6 = posYgotaAntigravedadDos6 - 40;
   }
-  if(millis() > 37275 && millis() < 37400){
+  if(millis() > (37275 + comienzo) && millis() < (37400 + comienzo)){
     fill(12, 171, 245);
     rect(228, posYgotas7, 57, 40);
     posYgotas7 = posYgotas7 + 40;
@@ -1071,82 +1089,82 @@ function draw() {
   }
   
   //blanco
-  if(millis() > 37600 && millis() < 37700){
+  if(millis() > (37600 + comienzo) && millis() < (37700 + comienzo)){
     fill(255, 255, 255);
     ellipse(200, 200, 400, 400);
   }
   
   //palpito
-  if(millis() > 37700 && millis() < 37900 || millis() > 38100 && millis() < 38300 || millis() > 38500 && millis() < 38700 || millis() > 38900 && millis() < 39100 || millis() > 39300 && millis() < 39500 || millis() > 39700 && millis() < 39900){
+  if(millis() > (37700 + comienzo) && millis() < (37900 + comienzo) || millis() > (38100 + comienzo) && millis() < (38300 + comienzo) || millis() > (38500 + comienzo) && millis() < (38700 + comienzo) || millis() > (38900 + comienzo) && millis() < (39100 + comienzo) || millis() > (39300 + comienzo) && millis() < (39500 + comienzo) || millis() > (39700 + comienzo) && millis() < (39900 + comienzo)){
     fill(252, 8, 118);
     ellipse(200, 200, 200, 200);
   }
-  if(millis() > 37900 && millis() < 38100 || millis() > 38300 && millis() < 38500 || millis() > 38700 && millis() < 38900 || millis() >39100 && millis() < 39300 || millis() > 39500 && millis() < 39700){
+  if(millis() > (37900 + comienzo) && millis() < (38100 + comienzo) || millis() > (38300 + comienzo) && millis() < (38500 + comienzo) || millis() > (38700 + comienzo) && millis() < (38900 + comienzo) || millis() > (39100 + comienzo) && millis() < (39300 + comienzo) || millis() > (39500 + comienzo) && millis() < (39700 + comienzo)){
     fill(255, 0, 64);
     ellipse(200, 200, 180, 180);
   }
   
   //blanco 2
-  if(millis() > 40100 && millis() < 40200){
+  if(millis() > (40100 + comienzo) && millis() < (40200 + comienzo)){
     fill(255, 255, 255);
     ellipse(200, 200, 400, 400);
   }
   
   //palpito 2
-  if(millis() > 40400 && millis() < 40600){
+  if(millis() > (40400 + comienzo) && millis() < (40600 + comienzo)){
     fill(252, 8, 118);
     ellipse(200, 200, 200, 200);
   }
-  if(millis() > 40600 && millis() < 40700){
+  if(millis() > (40600 + comienzo) && millis() < (40700 + comienzo)){
     fill(255, 0, 64);
     ellipse(200, 200, 180, 180);
   }
   
   //blanco 3
-  if(millis() > 40800 && millis() < 40900){
+  if(millis() > (40800 + comienzo) && millis() < (40900 + comienzo)){
     fill(255, 255, 255);
     ellipse(200, 200, 400, 400);
   }
   
   //palpito 3
-  if(millis() > 40900 && millis() < 41100 || millis() > 41300 && millis() < 41500 || millis() > 41700 && millis() < 41900 || millis() > 42100 && millis() < 42300){
+  if(millis() > (40900 + comienzo) && millis() < (41100 + comienzo) || millis() > (41300 + comienzo) && millis() < (41500 + comienzo) || millis() > (41700 + comienzo) && millis() < (41900 + comienzo) || millis() > (42100 + comienzo) && millis() < (42300 + comienzo)){
     fill(252, 8, 118);
     ellipse(200, 200, 200, 200);
   }
-  if(millis() > 41100 && millis() < 41300 || millis() > 41500 && millis() < 41700 || millis() > 41900 && millis() < 42100){
+  if(millis() > (41100 + comienzo) && millis() < (41300 + comienzo) || millis() > (41500 + comienzo) && millis() < (41700 + comienzo) || millis() > (41900 + comienzo) && millis() < (42100 + comienzo)){
     fill(255, 0, 64);
     ellipse(200, 200, 180, 180);
   }
   
   //blanco 3
-  if(millis() > 42400 && millis() < 42500){
+  if(millis() > (42400 + comienzo) && millis() < (42500 + comienzo)){
     fill(255, 255, 255);
     ellipse(200, 200, 400, 400);
   }
   
   //palpito4
-  if(millis() > 42600 && millis() < 42800 || millis() > 43000 && millis() < 43200 || millis() > 43400 && millis() < 43600 || millis() > 43800 && millis() < 44000 || millis() > 44200 && millis() < 44400 || millis() > 44600 && millis() < 44800 || millis() > 45000 && millis() < 45200){
+  if(millis() > (42600 + comienzo) && millis() < (42800 + comienzo) || millis() > (43000 + comienzo) && millis() < (43200 + comienzo) || millis() > (43400 + comienzo) && millis() < (43600 + comienzo) || millis() > (43800 + comienzo) && millis() < (44000 + comienzo) || millis() > (44200 + comienzo) && millis() < (44400 + comienzo) || millis() > (44600 + comienzo) && millis() < (44800 + comienzo) || millis() > (45000 + comienzo) && millis() < (45200 + comienzo)){
     fill(252, 8, 118);
     ellipse(200, 200, 200, 200);
   }
-  if(millis() > 42800 && millis() < 43000 || millis() > 43200 && millis() < 43400 || millis() > 43600 && millis() < 43800 || millis() > 44000 && millis() < 44200 || millis() > 44400 && millis() < 44600 || millis() > 44800 && millis() < 45000 || millis() > 45200 && millis() < 45400){
+  if(millis() > (42800 + comienzo) && millis() < (43000 + comienzo) || millis() > (43200 + comienzo) && millis() < (43400 + comienzo) || millis() > (43600 + comienzo) && millis() < (43800 + comienzo) || millis() > (44000 + comienzo) && millis() < (44200 + comienzo) || millis() > (44400 + comienzo) && millis() < (44600 + comienzo) || millis() > (44800 + comienzo) && millis() < (45000 + comienzo) || millis() > (45200 + comienzo) && millis() < (45400 + comienzo)){
     fill(255, 0, 64);
     ellipse(200, 200, 180, 180);
   }
   
   //tres circulos esquina
   	//circulo morado
-  if(millis() > 45500 && millis() < 45900){
+  if(millis() > (45500 + comienzo) && millis() < (45900 + comienzo)){
     fill(85, 51, 222);
     ellipse(350, 40, 20, 20);
   }
   	//circulo azul
-  if(millis() > 45600 && millis() < 45900){
+  if(millis() > (45600 + comienzo) && millis() < (45900 + comienzo)){
     fill(17, 87, 133);
     ellipse(320, 40, 20, 20);
   }
   	//circulo verde
-  if(millis() > 45700 && millis() < 45900){
+  if(millis() > (45700 + comienzo) && millis() < (45900 + comienzo)){
     fill(5, 105, 70);
     ellipse(290, 40, 20, 20);
   }
@@ -1154,17 +1172,17 @@ function draw() {
   //lineas de colores 
   	//linea morada
   strokeWeight(10);
-  if(millis() > 46200 && millis() < 46600){
+  if(millis() > (46200 + comienzo) && millis() < (46600 + comienzo)){
     stroke(85, 51, 222);
     line(200, 0, 0, 200);
   }
   	//linea azul
-  if(millis() > 46300 && millis() < 46600){
+  if(millis() > (46300 + comienzo) && millis() < (46600 + comienzo)){
     stroke(17, 87, 133);
     line(240, 0, 0, 240);
   }
   	//linea verde
-  if(millis() > 46400 && millis() < 46600){
+  if(millis() > (46400 + comienzo) && millis() < (46600 + comienzo)){
     stroke(5, 105, 70);
     line(280, 0, 0, 280);
   }
@@ -1172,29 +1190,29 @@ function draw() {
   //tres triangulos
   noStroke();
   	//triangulo morado
-  if(millis() > 46900 && millis() < 47300){
+  if(millis() > (46900 + comienzo) && millis() < (47300 + comienzo)){
     fill(85, 51, 222);
     triangle(140, 70, 170, 130, 110, 130);
   }
   	//triangulo azul
-  if(millis() > 47000 && millis() < 47300){
+  if(millis() > (47000 + comienzo) && millis() < (47300 + comienzo)){
     fill(17, 87, 133);
     triangle(210, 160, 240, 220, 180, 220);
   }
   	//triangulo verde
-  if(millis() > 47100 && millis() < 47300){
+  if(millis() > (47100 + comienzo) && millis() < (47300 + comienzo)){
     fill(5, 105, 70);
     triangle(280, 250, 310, 310, 250, 310);
   }
   
   //"gotas" naranjas y moradas chocando entre si 
-  if(millis() > 47300 && millis() < 47425){
+  if(millis() > (47300 + comienzo) && millis() < (47425 + comienzo)){
     fill(255, 140, 0);
     rect(0, 0, 40, 400);
     fill(90, 41, 194);
     rect(360, 0, 40, 400);
   }
-  if(millis() > 47425 && millis() < 47550){
+  if(millis() > (47425 + comienzo) && millis() < (47550 + comienzo)){
     fill(255, 140, 0);
     rect(0, 57, 40, 343);
     rect(posXgotaNaranjaDos1,0,  40, 57);
@@ -1204,7 +1222,7 @@ function draw() {
     rect(posXgotaMoradaDos1,0,  40, 57);
     posXgotaMoradaDos1 = posXgotaMoradaDos1 - 40;
   }
-  if(millis() > 47550 && millis() < 47675){
+  if(millis() > (47550 + comienzo) && millis() < (47675 + comienzo)){
     fill(255, 140, 0);
     rect(0, 57, 40, 228);
     rect(0, 342, 40, 58);
@@ -1216,7 +1234,7 @@ function draw() {
     rect(posXgotaMoradaDos2, 285,  40, 57);
     posXgotaMoradaDos2 = posXgotaMoradaDos2 - 40;
   }
-  if(millis() > 47675 && millis() < 47800){
+  if(millis() > (47675 + comienzo) && millis() < (47800 + comienzo)){
     fill(255, 140, 0);
     rect(0, 57, 40, 114);
     rect(0, 228, 40, 57);
@@ -1230,7 +1248,7 @@ function draw() {
     rect(posXgotaMoradaDos3, 171,  40, 57);
     posXgotaMoradaDos3 = posXgotaMoradaDos3 - 40;
   }
-  if(millis() > 47800 && millis() < 47925){
+  if(millis() > (47800 + comienzo) && millis() < (47925 + comienzo)){
     fill(255, 140, 0);
     rect(0, 114, 40, 57);
     rect(0, 228, 40, 57);
@@ -1244,7 +1262,7 @@ function draw() {
     rect(posXgotaMoradaDos4, 57,  40, 57);
     posXgotaMoradaDos4 = posXgotaMoradaDos4 - 40;
   }
-  if(millis() > 47925 && millis() < 48050){
+  if(millis() > (47925 + comienzo) && millis() < (48050 + comienzo)){
     fill(255, 140, 0);
     rect(0, 114, 40, 57);
     rect(0, 228, 40, 57);
@@ -1256,7 +1274,7 @@ function draw() {
     rect(posXgotaMoradaDos5, 342, 40, 58);
     posXgotaMoradaDos5 = posXgotaMoradaDos5 - 40;
   }
-  if(millis() > 48050 && millis() < 48175){
+  if(millis() > (48050 + comienzo) && millis() < (48175 + comienzo)){
     fill(255, 140, 0);
     rect(0, 228, 40, 57);
     rect(posXgotaNaranjaDos6, 114, 40, 57);
@@ -1266,7 +1284,7 @@ function draw() {
     rect(posXgotaMoradaDos6, 114, 40, 57);
     posXgotaMoradaDos6 = posXgotaMoradaDos6 - 40;
   }
-  if(millis() > 48175 && millis() < 48300){
+  if(millis() > (48175 + comienzo) && millis() < (48300 + comienzo)){
     fill(255, 140, 0);
     rect(posXgotaNaranjaDos7, 228, 40, 57);
     posXgotaNaranjaDos7 = posXgotaNaranjaDos7 + 40;
@@ -1276,22 +1294,22 @@ function draw() {
   }
   
   //tres rectangulos
-  if(millis() > 48400 && millis() < 48800){
+  if(millis() > (48400 + comienzo) && millis() < (48800 + comienzo)){
     fill(250, 10, 50);
     rect(50, 50, 300, 300);
   }
-  if(millis() > 48500 && millis() < 48800){
+  if(millis() > (48500 + comienzo) && millis() < (48800 + comienzo)){
     fill(0, 0, 0);
     rect(90, 90, 220, 220);
   }
-  if(millis() > 48600 && millis() < 48800){
+  if(millis() > (48600 + comienzo) && millis() < (48800 + comienzo)){
     fill(43, 85, 194);
     rect(130, 130, 140, 140);
   }
   
   //diamantes dos
   	//verde
-  if (millis() >49100 && millis() < 49500){
+  if (millis() > (49100 + comienzo) && millis() < (49500 + comienzo)){
     fill(40, 143, 34);
     beginShape();
     vertex(100,160);
@@ -1301,7 +1319,7 @@ function draw() {
     endShape(CLOSE);
   }
   	//rojo
-  if (millis() >49200 && millis() < 49500){
+  if (millis() > (49200 + comienzo) && millis() < (49500 + comienzo)){
     fill(117, 34, 34);
     beginShape();
     vertex(200,160);
@@ -1311,7 +1329,7 @@ function draw() {
     endShape(CLOSE);
   }
   	//azul
-  if (millis() > 49300 && millis() < 49500){
+  if (millis() > (49300 + comienzo) && millis() < (49500 + comienzo)){
     fill(39, 54, 87);
     beginShape();
     vertex(300,160);
@@ -1322,19 +1340,19 @@ function draw() {
   }
   
   //cuadrados X4 otra vez
-  if(millis() > 49800 && millis() < 50000){
+  if(millis() > (49800 + comienzo) && millis() < (50000 + comienzo)){
     fill(58, 75, 117);
     rect(100, 100, 80, 80);
     rect(220, 100, 80, 80);
     rect(100, 220, 80, 80);
     rect(220, 220, 80, 80);
   }
-  if(millis() > 50200 && millis() < 50400){
+  if(millis() > (50200 + comienzo) && millis() < (50400 + comienzo)){
     fill(58, 75, 117);
     rect(100, 100, 80, 80);
     rect(100, 220, 80, 80);
   }
-  if(millis() > 50400 && millis() < 50600){
+  if(millis() > (50400 + comienzo) && millis() < (50600 + comienzo)){
     fill(58, 75, 117);
     rect(220, 100, 80, 80);
     rect(220, 220, 80, 80);
