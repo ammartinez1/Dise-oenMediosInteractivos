@@ -337,7 +337,7 @@ function draw() {
     dirY = - dirY;
   }
     
-  if(frameCount < 70){
-    saveCanvas(name + frameCount, 'jpg');
-  }
+  //if(frameCount < 70){
+    //saveCanvas(name + frameCount, 'jpg');
+  //}
 }
