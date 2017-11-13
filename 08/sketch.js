@@ -404,17 +404,19 @@ function Alguita(){
   this.viva = true;
   
   this.dibujarse = function() {
-    fill(140, 190, 35);
-  	beginShape();
-  	vertex(this.x, this.y);
-  	vertex(this.x + 3, this.y - 20);
-  	vertex(this.x - 1, this.y - 50);
-  	vertex(this.x + 2, this.y - 75);
-  	vertex(this.x + 12, this.y - 70);
-  	vertex(this.x + 9, this.y - 50);
-  	vertex(this.x + 13, this.y - 30);
-  	vertex(this.x + 10, this.y);
-  	endShape(CLOSE);
+	if(this.viva == true){
+    		fill(140, 190, 35);
+  		beginShape();
+  		vertex(this.x, this.y);
+  		vertex(this.x + 3, this.y - 20);
+  		vertex(this.x - 1, this.y - 50);
+  		vertex(this.x + 2, this.y - 75);
+  		vertex(this.x + 12, this.y - 70);
+  		vertex(this.x + 9, this.y - 50);
+  		vertex(this.x + 13, this.y - 30);
+  		vertex(this.x + 10, this.y);
+  		endShape(CLOSE);
+	}
   }
   
   this.morir = function() {
