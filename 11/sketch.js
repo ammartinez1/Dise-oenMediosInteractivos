@@ -7,15 +7,12 @@ var Moscas = [];
 
 var puntaje = 0;
 
-var milliSecond;
-
 var colorFondo = 100;
 var estado = 0;
 
 var INTRO = 1;
 var JUEGO = 2;
 var OUTRO = 3;
-var PERDISTE = 4;
 
 function preload() {
   miImagen = loadImage("arbol.png");
@@ -94,16 +91,7 @@ function draw() {
     if(elMurcielago.moscas/Moscas.length >= 0.25) {
       estado = OUTRO;
       elMurcielago.moscas = 0;
-    }
-    
-    if(milliSecond > 15000 && elMurcielago.moscas <= 0.24){
-      estado = PERDISTE;
-      fill(0);
-      textAlign(CENTER);
-      textSize(50);
-      text("PERDISTE", width/2, height/2);
-    }
-  }else{
+    }else{
       fill(0);
       textAlign(CENTER);
       textSize(50);
@@ -119,11 +107,7 @@ function mouseReleased() { // si suelta mouse cambia de estado
     if(elMurcielago.moscas/Moscas.length >= 0.25) {
      estado = OUTRO;
     }
-  } else if (estado == PERDISTE) {
-    if (milliSecond > 15000 && elMurcielago.moscas <= 0.24){
-      estado = PERDISTE;
-    }
-  }else {
+  } else {
     estado = INTRO
   }
 
