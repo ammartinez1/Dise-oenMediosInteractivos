@@ -49,7 +49,7 @@ function draw() {
   
   //Para dibujar los arboles y que se muevan
   for(var i = 0; i < pasto.length; i = i + 1){
-    image(miImagen, pasto[i], height*0.76, 100, 100);
+    image(miImagen, pasto[i], height*0.82, 100, 100);
     pasto[i] = pasto[i] - 1;
     if(pasto[i] <= -60){
       pasto[i] = width;
