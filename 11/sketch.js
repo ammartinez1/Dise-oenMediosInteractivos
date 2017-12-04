@@ -96,8 +96,12 @@ function draw() {
       elMurcielago.moscas = 0;
     }
     
-    if(milliSecond > 15000 && elMurcielago.moscas < 15){
+    if(milliSecond > 15000 && elMurcielago.moscas <= 0.24){
       estado = PERDISTE;
+      fill(0);
+      textAlign(CENTER);
+      textSize(50);
+      text("PERDISTE", width/2, height/2);
     }
   }else{
       fill(0);
@@ -115,7 +119,11 @@ function mouseReleased() { // si suelta mouse cambia de estado
     if(elMurcielago.moscas/Moscas.length >= 0.25) {
      estado = OUTRO;
     }
-  } else {
+  } else if (estado == PERDISTE) {
+    if (milliSecond > 15000 && elMurcielago.moscas <= 0.24){
+      estado = PERDISTE;
+    }
+  }else {
     estado = INTRO
   }
 
