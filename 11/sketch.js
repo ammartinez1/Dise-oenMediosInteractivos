@@ -7,12 +7,15 @@ var Moscas = [];
 
 var puntaje = 0;
 
+var milliSecond;
+
 var colorFondo = 100;
 var estado = 0;
 
 var INTRO = 1;
 var JUEGO = 2;
 var OUTRO = 3;
+var PERDISTE = 4;
 
 function preload() {
   miImagen = loadImage("arbol.png");
@@ -42,6 +45,9 @@ function setup() {
 }
 
 function draw() {
+  
+  var milliSecond = millis();
+  print(milliSecond);
   background(227, 254, 255);
   fill(39, 87, 23);
   //pasto
@@ -88,6 +94,10 @@ function draw() {
     if(elMurcielago.moscas/Moscas.length >= 0.25) {
       estado = OUTRO;
       elMurcielago.moscas = 0;
+    }
+    
+    if(milliSecond > 15000 && elMurcielago.moscas < 15){
+      estado = PERDISTE;
     }
   }else{
       fill(0);
